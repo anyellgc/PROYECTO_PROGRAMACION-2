@@ -4,7 +4,7 @@ APLICACIÓN DE SISTEMA DE GESTION DE TAREAS Y PROYECTOS ESCOLARES.
 
 1.Descripción del Proyecto: Sistema de Gestión de Tareas y Proyectos Escolares
 
-Este proyecto consiste en el desarrollo de un sistema web integral diseñado para optimizar la gestión de tareas y proyectos en un entorno escolar como lo es para el colegio (I.E.EL CHARCO) del cual me gradue de once y el cual esta ubicacdo en el campo, pensando en darle solución en este caso a una problematica en la cual ellos no cuentan actualmente con una aplicació que pueda gestionar los proyectos y las tareas para mejorar sus conocimientos y que sean participes de algo innovador y diferente. El sistema busca mejorar la comunicación y la colaboración entre estudiantes, profesores y administradores, facilitando la organización de actividades académicas y extracurriculares.
+Este proyecto consiste en el desarrollo de un sistema web integral diseñado para optimizar la gestión de tareas y proyectos en un entorno escolar como lo es para el colegio (I.E .EL CHARCO) del cual me gradue de once y el cual esta ubicacdo en el campo, pensando en darle solución en este caso a una problematica en la cual ellos no cuentan actualmente con una aplicació que pueda gestionar los proyectos y las tareas para mejorar sus conocimientos y que sean participes de algo innovador y diferente. El sistema busca mejorar la comunicación y la colaboración entre estudiantes, profesores y administradores, facilitando la organización de actividades académicas y extracurriculares.
 
 2.Definicion modulos del sistema:
 
@@ -51,12 +51,14 @@ Objetivos del Proyecto:
 2.Facilitar la comunicación y la colaboración en el entorno escolar.
 3.Proporcionar una herramienta centralizada para la gestión de tareas, proyectos y eventos.
 4.Mejorar el seguimiento del progreso académico de los estudiantes.
+5.Crear algo bonito, intuitivo, y llamativo para el colegio que sea util.
 
 Tecnologías:
 
 El proyecto se desarrollará utilizando Python en el IDE Visual Code Studio.
 Se utilizará una base de datos relacional (SQL o MySQL) para el almacenamiento de datos.
 Se utilizan librerias como tkinter.
+Se pueden implementar mas librerias y recursos a medida que se va avanzando en el proyecto.
 
 Flujo del Sistema:
 
@@ -77,6 +79,7 @@ Flujo del Sistema:
  
 4.Calendario y Eventos:
  -El sistema muestra un calendario con eventos.
+ -El sistema puede notificar una alerta de un evento proximo.
 
 5.Informes y Estadísticas:
  -Los informes se pueden mostrar en la interfaz.
