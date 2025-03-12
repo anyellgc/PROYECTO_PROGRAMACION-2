@@ -1,10 +1,10 @@
 
-APLICACIÓN DE SISTEMA DE GESTION DE TAREAS Y PROYECTOS ESCOLARES.
+APLICACIÓN WEB DE SISTEMA DE GESTION DE TAREAS Y PROYECTOS ESCOLARES.
 
 
 1.Descripción del Proyecto: Sistema de Gestión de Tareas y Proyectos Escolares
 
-Este proyecto consiste en el desarrollo de un sistema web integral diseñado para optimizar la gestión de tareas y proyectos en un entorno escolar como lo es para el colegio (I.E .EL CHARCO) del cual me gradue de once y el cual esta ubicacdo en el campo, pensando en darle solución en este caso a una problematica en la cual ellos no cuentan actualmente con una aplicació que pueda gestionar los proyectos y las tareas para mejorar sus conocimientos y que sean participes de algo innovador y diferente. El sistema busca mejorar la comunicación y la colaboración entre estudiantes, profesores y administradores, facilitando la organización de actividades académicas y extracurriculares.
+Este proyecto consiste en el desarrollo de un sistema web integral diseñado para optimizar la gestión de tareas y proyectos en un entorno escolar como lo es para el colegio (I.E .EL CHARCO) del cual me gradue de once y el cual esta ubicacdo en el campo, pensando en darle solución en este caso a una problematica en la cual ellos no cuentan actualmente con una aplicación que pueda gestionar los proyectos y las tareas para mejorar sus conocimientos y que sean participes de algo innovador y diferente. El sistema busca mejorar la comunicación y la colaboración entre estudiantes, profesores y administradores, facilitando la organización de actividades académicas y extracurriculares.
 
 2.Definicion modulos del sistema:
 
@@ -42,7 +42,7 @@ Organiza los recursos por materia, grado o proyecto.
 7.Módulo de Informes y Estadísticas:
 
 Genera informes sobre el progreso de los estudiantes, el rendimiento de los profesores y otras métricas relevantes.
-Proporciona estadísticas sobre el uso del sistema y la participación de los usuarios.
+Proporciona estadísticas sobre la asistencia y participacion en las tareas dando un porcentaje a los proyectos de los estudiantes como ayuda en sus notas.
 
 
 Objetivos del Proyecto:
@@ -55,25 +55,27 @@ Objetivos del Proyecto:
 
 Tecnologías:
 
-El proyecto se desarrollará utilizando Python en el IDE Visual Code Studio.
-Se utilizará una base de datos relacional (SQL o MySQL) para el almacenamiento de datos.
-Se utilizan librerias como tkinter.
-Se pueden implementar mas librerias y recursos a medida que se va avanzando en el proyecto.
+1.El proyecto se desarrollará utilizando el lenguaje de programación Python en el IDE Visual Code Studio.
+2.Se utilizará Django como framework donde se va a integrar a HTML, CSS y JavaScript mediante un sistema de plantillas que contiene Django que los permite mezclar para tener una logica de presentación y mejorar la funcionalidad y el diseño del sistema web.
+3. La base de datos sera creada desde cero, para este sistema se implementara la base de datos usando MySQL desde un servicio en la nube como Google Cloud SQL y sera hecha desde MySQL Workbench como un entorno local antes de desplegar la base de datos a la nube.
+
 
 Flujo del Sistema:
 
 1.Autenticación:
  -El usuario ingresa sus credenciales.
- -Verificación  de las credenciales.
+ -Verificación  de las credenciales del usuario (estudiante, docente).
 
 2.Gestión de Tareas y Proyectos:
  -Los profesores crean tareas/proyectos a través de la interfaz.
- -Guardar datos en la base de datos que se seleccione.
  -Los estudiantes ver las tareas/proyectos en la interfaz.
  -Los estudiantes marcan tareas como completadas y suben entregas.
+ -Los profesores pueden subir guias de ayuda.
 
 3.Gestión de Calificaciones:
  -Los profesores agregan calificaciones a través de la interfaz.
+ -Los profesores podran hacer la retroalimentacion sobre las tareas.
+ -Los estudiantes pueden recibir comentarios en sus entregas.
  -Actualizar las calificaciones en la base de datos.
  -Los estudiantes pueden ver las calificaciones.
  
@@ -87,3 +89,4 @@ Flujo del Sistema:
  
 6.Roles y Permisos:
  -Permiso del administrador para dar acceso a recursos el administrador va a tener el rol de docente.
+ -Registro de los estudiantes y acceso del docente para ingresar al curso.
