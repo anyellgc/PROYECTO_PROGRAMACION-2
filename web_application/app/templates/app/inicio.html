@@ -1,0 +1,28 @@
+{% extends "app/conexion.html" %}
+
+{% block content  %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href={% static 'app/css/inicio.css' %} rel="stylesheet">
+<div class="contenedor">
+    <h2>ASIGNAR TAREA</h2>
+    <textarea class="caja-tarea" rows="5" placeholder="Escribe la tarea para el estudiante..."></textarea>
+</div>
+<h4>inicio</h4>
+<div class="container-botones">
+    <button class="boton-grande" id="btn1">AGREGAR</button>
+    <button class="boton-grande" id="btn2">EDITAR</button>
+    <button class="boton-grande" id="btn3">BORRAR</button>
+    <button class="boton-grande" id="btn4">SUBIR</button>
+    <button class="boton-grande" id="btn5">SIGUIENTE</button>
+</div>
+</head>
+
+{% endblock  %}
