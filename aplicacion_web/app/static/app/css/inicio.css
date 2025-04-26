@@ -1,0 +1,57 @@
+.caja-tarea {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #7be2f2;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.8s;
+}
+
+.caja-tarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.contenedor {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+
+.container-botones {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 50px;
+}
+
+.boton-grande {
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.boton-grande:hover {
+    transform: scale(1.05);
+}
+
+#btn1 { background-color: #FF5733; }
+#btn2 { background-color: #33FF57; }
+#btn3 { background-color: #3357FF; }
+#btn4 { background-color: #FF33F5; }
+#btn5 { background-color: #33FFF5; }
+
+.boton-grande:hover {
+    opacity: 0.10;
+}
