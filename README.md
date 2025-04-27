@@ -1,92 +1,169 @@
+# PROYECTO - PROGRAMACIÓN II
 
-APLICACIÓN WEB DE SISTEMA DE GESTION DE TAREAS Y PROYECTOS ESCOLARES.
+Este repositorio contiene todo lo relacionado con el desarrollo del proyecto para la asignatura de Programación II.
 
+## Aplicación Web de Sistema de Gestión de Tareas y Proyectos Escolares
 
-1.Descripción del Proyecto: Sistema de Gestión de Tareas y Proyectos Escolares
+### Breve Descripción del Problema que Resuelve
 
-Este proyecto consiste en el desarrollo de un sistema web integral diseñado para optimizar la gestión de tareas y proyectos en un entorno escolar como lo es para el colegio (I.E .EL CHARCO) del cual me gradue de once y el cual esta ubicacdo en el campo, pensando en darle solución en este caso a una problematica en la cual ellos no cuentan actualmente con una aplicación que pueda gestionar los proyectos y las tareas para mejorar sus conocimientos y que sean participes de algo innovador y diferente. El sistema busca mejorar la comunicación y la colaboración entre estudiantes, profesores y administradores, facilitando la organización de actividades académicas y extracurriculares.
+El colegio **I.E. El Charco**, ubicado en zona rural y del cual **somos egresados**, actualmente no cuenta con una aplicación que facilite la gestión de tareas y proyectos académicos. Esto limita la organización, la participación y la innovación educativa.
 
-2.Definicion modulos del sistema:
+Nuestro proyecto busca solucionar esta necesidad mediante una plataforma web que permita:
 
-Módulos Principales:
+- Gestionar tareas, proyectos y eventos escolares de forma eficiente.
+- Mejorar la comunicación y colaboración entre estudiantes y docentes.
+- Facilitar el acceso a recursos académicos y el seguimiento del rendimiento escolar.
 
-1.Autenticación y Gestión de Usuarios:
-Este módulo proporciona un acceso seguro al sistema, permitiendo a los usuarios registrarse, iniciar sesión y gestionar sus perfiles.
-Se implementará un sistema de roles y permisos para controlar el acceso a diferentes funcionalidades según el tipo de usuario (estudiante, profesor y administrador).
+---
 
-2.Procesamiento de Datos:
-Este módulo se encarga de la lógica de negocio del sistema, gestionando la creación, modificación y eliminación de tareas, proyectos, eventos y calificaciones.
-Se implementarán funcionalidades para asignar tareas, calcular calificaciones, generar informes y gestionar la información académica de los estudiantes.
+## Integrantes del Equipo
 
-3.Interfaz de Usuario:
-Este módulo proporciona una interfaz intuitiva y fácil de usar para que los usuarios interactúen con el sistema.
-Se diseñarán vistas para mostrar tareas, proyectos, calendarios, calificaciones y mensajes, facilitando la navegación y el acceso a la información.
+- Johán Nicolás Bautista Raba
+- Anyell Mariana Gómez Castillo
 
-Modulos Secundarios:
-4.Módulo de Calendario y Eventos:
+---
 
-Proporciona un calendario interactivo que muestra fechas importantes (exámenes, entregas, eventos escolares).
-Permite a los usuarios crear y gestionar eventos personales o grupales.
-Envía recordatorios automáticos de eventos próximos.
+## Lista Inicial de Módulos del Sistema
 
-5.Módulo de Calificaciones:
+### 1. Autenticación y Gestión de Usuarios
 
-Permite a los profesores registrar y gestionar las calificaciones de los estudiantes.
-Proporciona a los estudiantes acceso a las calificaciones y al progreso académico.
+- Registro e inicio de sesión de usuarios (estudiantes, docentes y administradores).
+- Gestión segura de perfiles y control de accesos mediante roles y permisos.
 
-6.Módulo de Gestión de Recursos:
+### 2. Procesamiento de Datos
 
-Permite a los profesores compartir materiales de estudio, documentos y otros recursos con los estudiantes.
-Organiza los recursos por materia, grado o proyecto.
+- Gestión de tareas, proyectos, eventos y calificaciones.
+- Asignación de tareas, cálculo de notas y generación de informes académicos.
 
-7.Módulo de Informes y Estadísticas:
+### 3. Interfaz de Usuario
 
-Genera informes sobre el progreso de los estudiantes, el rendimiento de los profesores y otras métricas relevantes.
-Proporciona estadísticas sobre la asistencia y participacion en las tareas dando un porcentaje a los proyectos de los estudiantes como ayuda en sus notas.
+- Diseño de una interfaz intuitiva que permita visualizar tareas, proyectos, calendarios, calificaciones y mensajes.
 
+### 4. Calendario y Eventos
 
-Objetivos del Proyecto:
+- Calendario interactivo para visualizar fechas importantes.
+- Creación de eventos personales o grupales.
+- Recordatorios automáticos de eventos próximos.
 
-1.Mejorar la organización y la productividad de estudiantes y profesores.
-2.Facilitar la comunicación y la colaboración en el entorno escolar.
-3.Proporcionar una herramienta centralizada para la gestión de tareas, proyectos y eventos.
-4.Mejorar el seguimiento del progreso académico de los estudiantes.
-5.Crear algo bonito, intuitivo, y llamativo para el colegio que sea util.
+### 5. Módulo de Calificaciones
 
-Tecnologías:
+- Registro y gestión de calificaciones por parte de los docentes.
+- Visualización de calificaciones y progreso académico por los estudiantes.
 
-1.El proyecto se desarrollará utilizando el lenguaje de programación Python en el IDE Visual Code Studio.
-2.Se utilizará Django como framework donde se va a integrar a HTML, CSS y JavaScript mediante un sistema de plantillas que contiene Django que los permite mezclar para tener una logica de presentación y mejorar la funcionalidad y el diseño del sistema web.
-3. La base de datos sera creada desde cero, para este sistema se implementara la base de datos usando MySQL desde un servicio en la nube como Google Cloud SQL y sera hecha desde MySQL Workbench como un entorno local antes de desplegar la base de datos a la nube.
+### 6. Gestión de Recursos
 
+- Compartición de documentos, guías y materiales de estudio organizados por materia, grado o proyecto.
 
-Flujo del Sistema:
+### 7. Informes y Estadísticas
 
-1.Autenticación:
- -El usuario ingresa sus credenciales.
- -Verificación  de las credenciales del usuario (estudiante, docente).
+- Generación de informes sobre el rendimiento académico.
+- Estadísticas de participación en proyectos y tareas.
+- Cálculo de porcentajes de participación como apoyo en la evaluación.
 
-2.Gestión de Tareas y Proyectos:
- -Los profesores crean tareas/proyectos a través de la interfaz.
- -Los estudiantes ver las tareas/proyectos en la interfaz.
- -Los estudiantes marcan tareas como completadas y suben entregas.
- -Los profesores pueden subir guias de ayuda.
+### 8. Chatbot Asistente Escolar
 
-3.Gestión de Calificaciones:
- -Los profesores agregan calificaciones a través de la interfaz.
- -Los profesores podran hacer la retroalimentacion sobre las tareas.
- -Los estudiantes pueden recibir comentarios en sus entregas.
- -Actualizar las calificaciones en la base de datos.
- -Los estudiantes pueden ver las calificaciones.
- 
-4.Calendario y Eventos:
- -El sistema muestra un calendario con eventos.
- -El sistema puede notificar una alerta de un evento proximo.
+#### ¿Qué papel cumple el chatbot en el sistema?
 
-5.Informes y Estadísticas:
- -Los informes se pueden mostrar en la interfaz.
- -Los eventos se pueden mostrar en la interfaz.
- 
-6.Roles y Permisos:
- -Permiso del administrador para dar acceso a recursos el administrador va a tener el rol de docente.
- -Registro de los estudiantes y acceso del docente para ingresar al curso.
+El chatbot se integra como un **asistente virtual básico** dentro de la plataforma, cumpliendo las siguientes funciones:
+
+- **Guía a estudiantes y profesores**:
+  - Responde preguntas típicas como:
+    - "¿Dónde veo mis tareas?"
+    - "¿Dónde están mis calificaciones?"
+    - "¿Qué eventos hay?"
+  - Facilita la navegación para usuarios que no estén familiarizados con el sistema.
+
+- **Mejora la experiencia del usuario**:
+  - Aporta interactividad y moderniza la plataforma.
+
+- **Ahorra tiempo a los docentes**:
+  - Responde automáticamente a preguntas frecuentes para que los docentes puedan enfocarse en sus actividades de enseñanza.
+
+- **Prepara el sistema para futuras mejoras**:
+  - Inicialmente ofrece respuestas fijas, pero a futuro podrá conectarse a la base de datos para consultas dinámicas (por ejemplo, buscar tareas pendientes o eventos próximos).
+
+| Función | ¿Qué hace el chatbot? |
+|:--------|:----------------------|
+| Atención Básica | Responde preguntas frecuentes |
+| Guía de Navegación | Indica dónde ver tareas, notas y proyectos |
+| Innovación | Hace la plataforma escolar más atractiva |
+| Base para Mejoras | Puede evolucionar a consultas dinámicas |
+
+---
+
+## Tecnologías a Utilizar
+
+### Backend y Base de Datos
+
+- **Python** con **Django** para el desarrollo del backend.
+- **MySQL** como sistema de gestión de base de datos:
+  - Diseño inicial en entorno local con **MySQL Workbench**.
+  - Implementación en la nube utilizando **Google Cloud SQL**.
+
+### Frontend
+
+- **HTML**, **CSS** y **JavaScript** utilizando el sistema de plantillas de Django para una integración fluida entre lógica y presentación.
+
+### Entornos de Desarrollo
+
+- **Visual Studio Code** como IDE principal de trabajo.
+
+### Chatbot
+
+- Chatbot web básico desarrollado en **JavaScript** e integrado mediante las plantillas de Django.
+
+---
+
+## Flujo del Sistema
+
+### Inicio y Autenticación
+
+- El usuario accede al sistema mediante su nombre de usuario y contraseña.
+- Se verifica el tipo de usuario (estudiante, docente o administrador).
+
+### Gestión de Tareas y Proyectos
+
+- Los docentes crean tareas y proyectos desde la plataforma.
+- Los estudiantes visualizan y gestionan sus tareas y proyectos asignados.
+- Los estudiantes pueden marcar tareas como completadas y cargar entregas.
+- Los docentes tienen la posibilidad de subir guías de apoyo.
+
+### Gestión de Calificaciones
+
+- Los docentes registran y actualizan las calificaciones de los estudiantes.
+- Se permite la retroalimentación personalizada sobre las entregas.
+- Los estudiantes consultan sus calificaciones en tiempo real.
+
+### Calendario y Eventos
+
+- El sistema presenta un calendario interactivo.
+- Se generan alertas de eventos y recordatorios automáticos.
+
+### Informes y Estadísticas
+
+- Se muestran informes de rendimiento académico.
+- Se calculan estadísticas de participación en actividades escolares.
+
+### Chatbot Escolar
+
+- El chatbot guía a los usuarios para encontrar la información de manera rápida.
+- Se planea su evolución hacia un chatbot conectado a la base de datos.
+
+### Roles y Permisos
+
+- El administrador, que también cumple el rol de docente, gestiona el acceso de los usuarios y la asignación de recursos.
+
+---
+
+## Cronograma de Actividades
+
+- [ ] Organización de módulos en Notion.
+- [ ] Configuración del entorno de desarrollo (Django + MySQL).
+- [ ] Creación de la base de datos local y despliegue en Google Cloud SQL.
+- [ ] Desarrollo de módulos principales (autenticación, tareas, proyectos).
+- [ ] Implementación del calendario y gestión de eventos.
+- [ ] Desarrollo del módulo de informes y estadísticas.
+- [ ] Creación e integración del chatbot asistente.
+- [ ] Pruebas de usuario y ajustes finales.
+
+---
