@@ -18,8 +18,8 @@ Nuestro proyecto busca solucionar esta necesidad mediante una plataforma web que
 
 ## Integrantes del Equipo
 
-- Johán Nicolás Bautista Raba
-- Anyell Mariana Gómez Castillo
+- Johán Nicolás Bautista Raba.
+- Anyell Mariana Gomez Castillo.
 
 ---
 
@@ -91,18 +91,18 @@ El chatbot se integra como un **asistente virtual básico** dentro de la platafo
 
 ---
 
-## Tecnologías a Utilizar
+## Tecnologías a Utilizar:
 
 ### Backend y Base de Datos
 
 - **Python** con **Django** para el desarrollo del backend.
-- **MySQL** como sistema de gestión de base de datos:
+- **SQL** como sistema de gestión de base de datos:
   - Diseño inicial en entorno local con **MySQL Workbench**.
-  - Implementación en la nube utilizando **Google Cloud SQL**.
+  - Implementación de la base de datos que django trae pre-configurada por defecto que es **SQlite3**.
 
 ### Frontend
 
-- **HTML**, **CSS** y **JavaScript** utilizando el sistema de plantillas de Django para una integración fluida entre lógica y presentación.
+- **HTML**, **CSS** y **JavaScript** utilizando el sistema de plantillas de Django para una integración fluida entre lógica y presentación y visualización.
 
 ### Entornos de Desarrollo
 
