@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Perfil
+#----------------------------------------------------------
+from .models import Curso
 
 # Register your models here.
 class PerfilAdmin(admin.ModelAdmin):
@@ -14,4 +16,9 @@ class PerfilAdmin(admin.ModelAdmin):
     
     
 admin.site.register(Perfil, PerfilAdmin)
+admin.site.register(Curso)
+
+
+
+
 

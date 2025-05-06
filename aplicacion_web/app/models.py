@@ -29,5 +29,13 @@ def save_user_profile(sender, instance, **kwargs):
     
 post_save.connect(create_user_profile, sender=User)
 post_save.connect(save_user_profile, sender=User)
+
+#parte de nuevo curso donde se empieza a modificar el codigo   
+class Curso(models.Model):
+    codigo = models.CharField(primary_key=True, max_length=10, verbose_name='Código de categoría')
+    nombre = models.CharField(max_length=50)
+    cupos =models.PositiveSmallIntegerField()
     
-    
+    def __str__(self):
+        texto = "{0} ({1})"
+        return texto.format(self.nombre, self.cupos)

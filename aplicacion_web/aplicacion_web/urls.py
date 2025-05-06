@@ -35,7 +35,9 @@ from django.urls import path, include
 from django.contrib import admin
 
 urlpatterns = [
-  path('', include('app.urls')),  # URL for the app views
+  path('', include('app.urls')),
+  path('inicio/', include('app.urls')),  # URL for the app views
   path('admin/', admin.site.urls),
   path('accounts/', include ('django.contrib.auth.urls')),
+  
   ]# URL for authentication views
