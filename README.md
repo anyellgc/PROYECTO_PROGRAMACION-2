@@ -158,8 +158,8 @@ El chatbot se integra como un **asistente virtual básico** dentro de la platafo
 ## Cronograma de Actividades
 
 - [ ] Organización de módulos en Notion.
-- [ ] Configuración del entorno de desarrollo (Django + MySQL).
-- [ ] Creación de la base de datos local y despliegue en Google Cloud SQL.
+- [ ] Configuración del entorno de desarrollo (Django + SQL).
+- [ ] Interacción de la base de datos SQLITE3 dentro de la plantilla por defecto.
 - [ ] Desarrollo de módulos principales (autenticación, tareas, proyectos).
 - [ ] Implementación del calendario y gestión de eventos.
 - [ ] Desarrollo del módulo de informes y estadísticas.
