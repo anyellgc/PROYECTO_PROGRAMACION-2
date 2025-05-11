@@ -97,8 +97,8 @@ El chatbot se integra como un **asistente virtual básico** dentro de la platafo
 
 - **Python** con **Django** para el desarrollo del backend.
 - **SQL** como sistema de gestión de base de datos:
-  - Diseño inicial en entorno local con **MySQL Workbench**.
-  - Implementación de la base de datos que django trae pre-configurada por defecto que es **SQlite3**.
+ - Diseño inicial en entorno local con la base de datos que viene en la plantilla Django.
+ - Implementación de la base de datos que Django trae preconfigurada por defecto que es **SQlite3** para usuarios (docentes y estudiantes).
 
 ### Frontend
 
