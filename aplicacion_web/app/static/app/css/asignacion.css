@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #15d11f;
+    margin: 0;
+    padding: 0;
+    font-size: center;
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+    min-height: 100vh;
+
+    
+    
+}
+
+.modal {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+    }
+
+    .modal-content {
+        background: #4c872e;
+        padding: 25px 30px;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content input,
+    .modal-content textarea,
+    .modal-content select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #2d9e65;
+        border-radius: 6px;
+    }
+
+    .modal-content .btn {
+        background-color: #28a745;
+        color: rgb(23, 181, 58);
+        border: none;
+        padding: 12px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .btn-edit { background-color: #ffc107; }
+    .btn-delete { background-color: #dc3545; }
+    .btn-entrega { background-color: #17a2b8; }
+
+    .btn-edit:hover { background-color: #e0a800; }
+    .btn-delete:hover { background-color: #c82333; }
+    .btn-entrega:hover { background-color: #138496; }

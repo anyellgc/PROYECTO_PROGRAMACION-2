@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Recursos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color:rgb(80, 208, 92);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(142, 67, 67, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            color:rgb(0, 0, 0);
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+
+        }
+
+        .upload-form {
+            background-color:rgb(109, 168, 117);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .upload-form h4 {
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        form input[type="text"],
+        form textarea,
+        form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgb(118, 196, 10);
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        form button {
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        form button:hover {
+            background-color: #219150;
+        }
+
+        .container {
+           max-width: 1100px;
+           margin: 40px auto;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color:rgb(70, 209, 5);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h5 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        .card p {
+            flex-grow: 1;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .card-footer {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .card-footer a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #2980b9;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .card-footer a:hover {
+            background-color: #1f6391;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Gestión de Recursos</h2>
+
+        <!-- Formulario de subida -->
+        <div class="upload-form">
+            <h4>Subir nuevo recurso</h4>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Subir archivo</button>
+            </form>
+        </div>
+
+        
+        <div class="card-grid">
+            {% for recurso in recursos %}
+            <div class="card">
+                <h5>{{ recurso.nombre }}</h5>
+                <p>{{ recurso.descripcion|default:"Sin descripción." }}</p>
+                <div class="card-footer">
+                    <a href="{{ recurso.archivo.url }}" download>Descargar</a>
+
+                    <!-- Formulario de eliminación -->
+                    <form action="{% url 'eliminar_recurso' recurso.id %}" method="POST" style="display:inline-block;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

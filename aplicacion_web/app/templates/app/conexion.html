@@ -3,60 +3,195 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WELCOME TO MY WEB APPLICATION</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <link href={% static 'app/css/custom.css' %} rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    
-</head>
-<body>
-    <div class="container" id ="container">
-        <nav class="navbar navbar-expand-lg navbar-custom">
-            <div class="container-fluid d-flex align-items-center">
-                <div class="navbar-title-container">
-                    <a class="navbar-brand navbar-title" href="{% url 'registro' %}">SISTEMA DE GESTIÓN DE TAREAS Y PROYECTOS ESCOLARES</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-nav-custom">
-                        <li class="nav-item nav-item-custom">
-                            <a class="nav-link active nav-link-custom" aria-current="page" href="{% url 'registro' %}">INICIO</a>
-                        </li>
-                        <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom" href="{% url 'inicio' %}">ACCEDER</a>
-                        </li>
-                        {% if request.user.is_authenticated %}
-                        <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom" href="{% url 'exit' %}">SALIR</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom" href="{% url 'login' %}">INGRESAR</a>
-                        </li>
-                        <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom" href="{% url 'registrer' %}">REGISTRARSE</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     
-        {% block content %}{% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link href="{% static 'app/css/custom.css' %}" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url("{% static 'app/jpg/verde.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            overflow-x: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar-custom {
+            background-color: rgb(101, 182, 21);
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1030;
+        }
+
+        .navbar-title {
+            color: white;
+            font-weight: bold;
+            font-size: 1.9rem;
+            text-decoration: none;
+        }
+
+        .nav-link-custom {
+            color: white !important;
+        }
+
+        .sidebar-btn {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        #main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #65b615 0%, #4CAF50 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-weight: 800;
+            box-shadow: 0 -4px 20px rgba(67, 97, 238, 0.15);
+            margin-top: auto;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        #main-content {
+            flex: 1;
+        }
+
+        /* Estilo de la barra lateral */
+        .offcanvas-start {
+            background-color: #b2fcb2; /* verde claro */
+        }
+
+        .offcanvas-body h6 {
+            color: #155724;
+        }
+
+        .offcanvas-body i {
+            color: #155724;
+        }
+
+        .offcanvashider {
+            background-color: #b2fcb2; /* verde claro */
+            family: 'Georgia', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand navbar-title" href="{% url 'registro' %}">SISTEMA DE GESTIÓN DE TAREAS Y PROYECTOS ESCOLARES</a>
+        <button class="sidebar-btn ms-auto" data-bs-toggle="offcanvas" data-bs-target="#infoSidebar" aria-controls="infoSidebar">☰</button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'registro' %}">INICIO</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'inicio' %}">ACCEDER</a></li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'exit' %}">SALIR</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'login' %}">INGRESAR</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'registrer' %}">REGISTRARSE</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
+</nav>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="infoSidebar">
+  <div class="offcanvas-header" id="offcanvasHeader">
+    <h4 class="offcanvas-title">SOBRE LOS CREADORES:  </h4>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+  </div>
+  <div class="offcanvas-body">
+    <h5><i class="bi bi-people-fill me-2"></i><strong>Creadores:</strong></h5>
+    <ul>
+        <li>Anyell Gomez – Estudiante</li>
+        <li>Nicolas Bautista – Estudiante</li>
+    </ul>
+
+    <h5><i class="bi bi-building me-2"></i><strong>Institución:</strong></h5>
+    <p>I.E. El Charco</p>
+
+    <h5><i class="bi bi-code-slash me-2"></i><strong>Tecnologías:</strong></h5>
+    <ul>
+        <li>Django 5.2</li>
+        <li>Python 3.13</li>
+        <li>SQLite</li>
+        <li>HTML, CSS, JS</li>
+        <li>Bootstrap 5</li>
+    </ul>
+
+    <h5><i class="bi bi-layers-half me-2"></i><strong>Versión:</strong></h5>
+    <p>1.0.0</p>
+
+    <h5><i class="bi bi-telephone-fill me-2"></i><strong>Teléfono:</strong></h5>
+    <p>+57 3152674020</p>
+    <p>+57 3214024561</p>
+
+    <h5><i class="bi bi-envelope-at-fill me-2"></i><strong>Contacto:</strong></h5>
+    <p>amgc3018@gmail.com</p><p>johanbautista4037@gmail.com</p>
+
+    <h5><i class="bi bi-info-circle-fill me-2"></i><strong>Acerca del Proyecto</strong></h5>
+    <p>Este sistema fue diseñado para optimizar la gestión de tareas escolares y mejorar la colaboración entre docentes y estudiantes.</p>
+  </div>
+</div>
+
+<!-- Contenido principal -->
+<div class="container" id="main-content">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Pie de página -->
+<footer class="footer">
     <div class="container">
-        {% block body %}
-  
-        {% endblock %}
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
+        <p class="mb-0">Diseñado para <strong>I.E. EL CHARCO</strong> &copy; 2025 | Estudiantes de Ingeniería de Sistemas.</p>
+    </div>
+</footer>
+
+<!-- Título animado -->
+<script>
+    let i = 0;
+    const emojis = ['🚀', '🚀', '🚀', '🚀', '🚀'];
+    setInterval(() => {
+        document.title = emojis[i++ % emojis.length] + ' WELCOME TO MY WEB APPLICATION';
+    }, 1000);
+</script>
+
+<!-- Script personalizado -->
+<script src="{% static 'app/js/inicio.js' %}"></script>
+{% include 'app/chat.html' %}
+
 </body>
 </html>

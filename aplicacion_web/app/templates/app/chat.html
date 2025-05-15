@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: Arial;
+        margin: 0;
+        padding: 0;
+      }
+
+      
+      #chat-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+
+
+      }
+
+      #chat-bubble {
+        width: 60px;
+        height: 60px;
+        background-color:rgb(39, 221, 91);
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgb(18, 15, 15);
+      }
+
+      #chat-container {
+        display: none;
+        flex-direction: column;
+        width: 500px;
+        height: 400px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 25px rgb(23, 22, 22);
+        margin-bottom: 10px;
+      }
+
+      #chat-header {
+        background-color:rgb(25, 201, 95);
+        color: white;
+        padding: 10px;
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      #chat-box {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        font-size: 14px;
+        background-color:rgb(129, 220, 130) ;
+       
+      }
+
+      .user {
+        color: red;
+        font-size: 20px
+      }
+      .bot {
+        color: blue;
+        font-size: 20px;
+      }
+
+      #user-input {
+        padding: 8px;
+        width: calc(100% - 80px);
+        border: none;
+        outline: none;
+        color: black;
+        font-size: 18px;
+        border-radius: 10px;
+        margin: 10px;
+        background-color: #f1f1f1;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+
+
+      }
+
+      #send-button {
+        width:65px;
+        height: 65px;
+        background-color:rgb(4, 212, 0);
+        color: white;
+        border: none;
+        padding: 8px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      #chat-footer {
+        display: flex;
+        border-top: 1px solid #ccc;
+      }
+    </style>
+  </head>
+    <div id="chat-widget">
+      <div id="chat-container">
+        <div id="chat-header">🧠Asistente Educativo📚</div>
+        <div id="chat-box"></div>
+        <div id="chat-footer">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Escribe tu mensaje..."
+          />
+          <button id="send-button" onclick="sendMessage()">Enviar</button>
+        </div>
+      </div>
+      <div id="chat-bubble" onclick="toggleChat()">🤖</div>
+    </div>
+
+    <script>
+      function toggleChat() {
+        const chatContainer = document.getElementById("chat-container");
+        chatContainer.style.display =
+          chatContainer.style.display === "flex" ? "none" : "flex";
+      }
+
+      function sendMessage() {
+        const input = document.getElementById("user-input");
+        const chatBox = document.getElementById("chat-box");
+        const message = input.value.trim();
+        if (!message) return;
+
+        chatBox.innerHTML += `<div class="user"><strong>Tú:</strong> ${message}</div>`;
+        input.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        
+        setTimeout(() => {
+          let respuesta = "Lo siento, no entiendo tu mensaje aún.";
+          if (message.toLowerCase().includes("tarea")) {
+            respuesta = "¿Qué tarea necesitas resolver?";
+          } else if (message.toLowerCase().includes("hola")) {
+            respuesta = "¡Hola! ¿En qué puedo ayudarte con tus tareas?";
+          } else if (message.toLowerCase().includes("gracias")) {
+            respuesta = "¡De nada! Estoy aquí para ayudarte.";
+          } else if (message.toLowerCase().includes("adios")) {
+            respuesta = "¡Hasta luego! No dudes en volver si necesitas ayuda.";
+          } else if (message.toLowerCase().includes("matemáticas")) {
+            respuesta = "¿Qué tema de matemáticas necesitas revisar?";
+          } else if (message.toLowerCase().includes("sobre numeros reales")) {
+            respuesta = "Los números reales son todos los números que pueden representarse en la recta numérica. ¿Quieres saber más sobre ellos?";
+          } else if (message.toLowerCase().includes("aritmética")) {
+            respuesta = "¿Necesitas ayuda con operaciones aritmeticas?";
+          } else if (message.toLowerCase().includes("algebra")) {
+            respuesta = "¿Qué concepto de álgebra te gustaría entender mejor?";
+          } else if (message.toLowerCase().includes("geometría")) {
+            respuesta = "¿Qué figura geométrica te gustaría estudiar?";
+          } else if (message.toLowerCase().includes("quimica")) {
+            respuesta = "¿Qué concepto de química te gustaría entender mejor?";
+          } else if (message.toLowerCase().includes("fisica")) {
+            respuesta = "¿Qué aspecto de la física te interesa?";
+          } else if (message.toLowerCase().includes("biologia")) {
+            respuesta = "¿Qué tema de biología necesitas estudiar?";
+          } else if (message.toLowerCase().includes("geografia")) {
+            respuesta = "¿Qué parte de geografía quieres explorar?";
+          } else if (message.toLowerCase().includes("historia")) {
+            respuesta = "¿Qué periodo histórico te gustaría estudiar?";
+          } else if (message.toLowerCase().includes("ciencia")) {
+            respuesta = "¿Qué rama de la ciencia te interesa?";
+          } else if (message.toLowerCase().includes("programación")) {
+            respuesta = "¿Qué lenguaje de programación estás aprendiendo?";
+          } else if (message.toLowerCase().includes("ayuda")) {
+            respuesta = "Claro, ¿en qué necesitas ayuda?";
+          } else if (message.toLowerCase().includes("si soy doccente como puedo acceder a un curso")
+          ) {
+            respuesta ="Ir a la sección gestión de cursos aparece un contenedor para llenar la información correspondiente al curso.";
+          } else if (message.toLowerCase().includes("si soy estudiante como me inscribo a un curso")
+          ) {
+            respuesta ="Puede acceder al curso presionando el botón acceder que esta al lado del contenedor.";
+          }
+
+          chatBox.innerHTML += `<div class="bot"><strong>Bot:</strong> ${respuesta}</div>`;
+          chatBox.scrollTop = chatBox.scrollHeight;
+        }, 600);
+      }
+    </script>
+    <script>
+      let i = 0;
+      const emojis = ["🧠", "🧠", "🧠", "🧠", "🧠"];
+      setInterval(() => {
+        document.chat-header = emojis[i++ % emojis.length] + "Asistente Educativo";
+      }, 1000);
+  </body>
+</html>
+    

@@ -1,19 +1,47 @@
 {% extends "app/conexion.html" %}
+{% load static %}
 
 {% block content %}
 
-<h2>REGISTRO DEL USUARIO: </h2>
+<style>
+  #bienvenida {
+    text-transform: uppercase;
+    font-size: 2.0rem;
+    font-weight: bold;
+    color: white;
+    font-family: 'Georgia', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    
+
+  }
+  #bienvenidaTexto {
+    padding: 100px;
+    border-radius: 30px;
+    background-color:rgb(22, 174, 24);
+
+  }
+
+  
+</style>
+
+<div class="container mt-0 text-center" id="bienvenida">
+  <p class="text-white" id="bienvenidaTexto">
+    Bienvenid@s a la aplicación web diseñada especialmente para la comunidad educativa del colegio I.E. El Charco.
+    Conscientes de la necesidad de optimizar la gestión de tareas y proyectos académicos en nuestro entorno rural,
+    hemos creado esta herramienta para facilitar la organización, fomentar la participación activa y promover la innovación
+    en el proceso de aprendizaje de cada estudiante y docente.
+  </p>
+</div>
+{% endblock %}
+
+{% block body %}
 {% if request.user.is_authenticated %}
-    <hr>
-    <h4>
-        
-        {{ user.username | upper }}, bienvenid@ a la aplicación.
-        <p>Tu rol es: {{ user.get_role_display }}</p>
-        <p>Tu correo es: {{ user.email }}</p>
-
-    </h4>
-         
+  <hr>
+  <div class="container">
+    <h4>{{ user.username|upper }}, bienvenid@ a la aplicación.</h4>
+    <p>Tu rol es: {{ user.get_role_display }}</p>
+    <p>Tu correo es: {{ user.email }}</p>
+  </div>
 {% endif %}
-
-
-{% endblock  %}
+{% endblock %}

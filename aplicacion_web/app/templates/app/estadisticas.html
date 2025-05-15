@@ -1,0 +1,164 @@
+{% block content %}
+
+<style>
+    body {
+        background-color:rgb(141, 184, 107);
+    }
+
+    .panel-estadisticas {
+        background: linear-gradient(to right,rgb(87, 173, 134),rgb(132, 218, 158));
+        border-radius: 25px;
+        max-width: 1100px;
+        margin: auto;
+        padding: 80px;
+        border-radius: 25px;
+        box-shadow: 0 12px 28px rgb(114, 208, 26);
+        animation: fadeIn 0.7s ease;
+        
+    }
+
+    .panel-estadisticas h2 {
+        font-weight: 700;
+        color:rgb(0, 0, 0);
+        margin-bottom: 30px;
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .card {
+        border: none;
+        border-radius: 18px;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+        
+    }
+
+    .btn {
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        transform: scale(1.03);
+    }
+
+    .progress {
+        height: 26px;
+        border-radius: 30px;
+        background-color:rgb(204, 211, 206);
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        font-size: 14px;
+        line-height: 26px;
+        font-weight: 600;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .subtitulo-seccion {
+        font-size: 20px;
+        color: #555;
+    }
+</style>
+
+<div class="py-5">
+    <div class="panel-estadisticas">
+        <h2 class="text-center mb-5">📈 Informes y Estadísticas Académicas</h2>
+
+        <!-- Tarjetas -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🎓 Rendimiento</h5>
+                        <p class="card-text">Informe detallado por materias.</p>
+                        <button onclick="mostrarSeccion('rendimiento')" class="btn btn-primary w-100">Ver Informe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">📌 Participación</h5>
+                        <p class="card-text">Asistencia y cumplimiento.</p>
+                        <button onclick="mostrarSeccion('participacion')" class="btn btn-success w-100">Ver Estadísticas</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">📊 Porcentajes</h5>
+                        <p class="card-text">Evaluación final por rubros.</p>
+                        <button onclick="mostrarSeccion('porcentajes')" class="btn btn-info w-100">Calcular</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección dinámica -->
+        <div id="seccion-resultados" style="display: none;" class="mt-5">
+            <h4 id="titulo-seccion" class="text-center mb-4 subtitulo-seccion"></h4>
+            <div id="contenido-seccion">
+                <!-- Ejemplo de progreso -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Estudiante: Juan Pérez</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" style="width: 85%;">85%</div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Proyecto Grupal</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning text-dark" style="width: 60%;">60%</div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Entrega de Tareas</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" style="width: 45%;">45%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function mostrarSeccion(tipo) {
+        const seccion = document.getElementById("seccion-resultados");
+        const titulo = document.getElementById("titulo-seccion");
+
+        const titulos = {
+            rendimiento: "📘 Informe de Rendimiento Académico",
+            participacion: "📎 Estadísticas de Participación",
+            porcentajes: "📊 Cálculo de Porcentajes de Evaluación"
+        };
+
+        titulo.textContent = titulos[tipo];
+        seccion.style.display = "block";
+        window.scrollTo({ top: seccion.offsetTop - 100, behavior: 'smooth' });
+    }
+</script>
+
+{% endblock %}

@@ -1,116 +1,167 @@
 th, td {
     text-align: center;
     vertical-align: middle;
+    padding: 10px;
 }
+  .gestion-cursos-container {
+    margin-top: 20px;
+  }
 
-/* Estilos del body con tres colores */
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background: linear-gradient(
-        135deg,
-        #2ecc71 0%,    /* Color superior */
-        #3498db 50%,   /* Color medio */
-        #e74c3c 100%   /* Color inferior */
-    );
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgba(150, 24, 24, 0.599);
-}
+  .gestion-cursos-title {
+    color: #3498db; 
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+  }
 
-/* Contenedor principal para el contenido */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-/* Estilos de la página */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-/* Columnas */
-.col-sm-12 {
-    flex: 1;
-    min-width: 300px;
-}
-
-/* Estilos de mensajes */
-.alert-success {
-    background-color: rgba(46, 204, 113, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  .curso-form-card {
+    border: 1px solid #b4d208;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: white;
-}
+  }
 
-/* Estilos del formulario */
-.card {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-}
+  .curso-form-card .card-body {
+    padding: 20px;
+  }
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
+  .form-group label {
+    color: #555;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
 
-.form-control {
-    border: 2px solid #d01818;
-    border-radius: 8px;
-    padding: 0.75rem;
+  .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
     width: 100%;
-    background-color: rgb(0, 176, 215);
-}
+    box-sizing: border-box;
+    font-size: 16px;
+  }
 
-/* Estilos de la tabla */
-.table {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
-}
+  .form-control:focus {
+    border-color: #3498db; /* Blue focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  }
 
-.table th,
-.table td {
-    padding: 1.2rem 1.5rem;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
-}
-
-.table th {
-    background-color: rgba(46, 204, 113, 0.8);
+  .btn-success {
+    background-color: #2ecc71; /* Green */
     color: white;
-    border-radius: 8px 8px 0 0;
-}
-
-/* Estilos de botones */
-.btn {
-    border-radius: 6px;
-    padding: 0.75rem 1.5rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
     border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
     cursor: pointer;
-}
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
 
-.btn-success {
-    background-color: #2ecc71;
+  .btn-success:hover {
+    background-color: #27ae60; /* Darker Green */
+  }
+
+  .cursos-list-title {
+    color: #e67e22; /* Orange */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .table thead th {
+    background-color: #3498db; /* Blue header */
     color: white;
-}
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #2980b9; /* Darker Blue border */
+  }
 
-.btn-info {
-    background-color: #3498db;
+  .table tbody td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .btn-primary, .btn-info, .btn-danger {
     color: white;
-}
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-right: 5px;
+  }
 
-.btn-danger {
-    background-color: #e74c3c;
-    color: white;
-}
+  .btn-primary {
+    background-color: #3498db; 
+  }
 
+  .btn-primary:hover {
+    background-color: #2980b9; 
+  }
 
+  .btn-info {
+    background-color: #17a2b8; 
+  }
 
+  .btn-info:hover {
+    background-color: #138496; 
+  }
+
+  .btn-danger {
+    background-color: #e74c3c; 
+  }
+
+  .btn-danger:hover {
+    background-color: #c0392b; 
+  }
+
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+
+  .alert-success .close {
+    color: #155724;
+    opacity: 0.7;
+    text-decoration: none;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .alert-success .close:hover {
+    opacity: 1;
+  }
+
+  .text-dark {
+    color: #212529 !important;
+  }

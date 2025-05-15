@@ -1,0 +1,205 @@
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'app/css/asignacion.css' %}">
+{% block content %}
+
+
+<div class="container mt-0">
+    <h2 class="mb-4 text-center">ASIGNACIÓN DE TAREAS Y PROYECTOS</h2>
+    <div class="text-center mb-4">
+        <button class="btn btn-primary me-2" onclick="abrirModal('tarea')">+ TAREA</button>
+        <button class="btn btn-success" onclick="abrirModal('proyecto')">+ PROYECTO</button>
+    </div>
+
+    <!-- TAREAS -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-primary text-white"><h4 class="mb-0">TAREAS</h4></div>
+        <div class="card-body">
+            {% if tareas %}
+                <ul class="list-group">
+                    {% for tarea in tareas %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div>
+                                <strong>{{ tarea.titulo }}</strong> - {{ tarea.descripcion }} <br>
+                                <small>Entrega: {{ tarea.fecha_entrega }} | Curso: {{ tarea.curso.nombre }}</small>
+                            </div>
+                            <div class="btn-group ms-2">
+                                <button class="btn btn-sm btn-entrega" onclick="abrirModalEntrega({{ tarea.id }}, 'tarea')">📎</button>
+                                <button class="btn btn-sm btn-edit" onclick="abrirModal('tarea', {{ tarea.id }}, '{{ tarea.titulo }}', '{{ tarea.descripcion }}', '{{ tarea.fecha_entrega }}', '{{ tarea.curso.codigo }}')">✏️</button>
+                                <button class="btn btn-sm btn-delete" onclick="eliminarAsignacion({{ tarea.id }}, 'tarea')">🗑️</button>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">No hay tareas asignadas.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- PROYECTOS -->
+    <div class="card shadow">
+        <div class="card-header bg-success text-white"><h4 class="mb-0">PROYECTOS</h4></div>
+        <div class="card-body">
+            {% if proyectos %}
+                <ul class="list-group">
+                    {% for proyecto in proyectos %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div>
+                                <strong>{{ proyecto.nombre }}</strong> - {{ proyecto.descripcion }} <br>
+                                <small>Entrega: {{ proyecto.fecha_entrega }} | Curso: {{ proyecto.curso.nombre }}</small>
+                            </div>
+                            <div class="btn-group ms-2">
+                                <button class="btn btn-sm btn-entrega" onclick="abrirModalEntrega({{ proyecto.id }}, 'proyecto')">📎</button>
+                                <button class="btn btn-sm btn-edit" onclick="abrirModal('proyecto', {{ proyecto.id }}, '{{ proyecto.nombre }}', '{{ proyecto.descripcion }}', '{{ proyecto.fecha_entrega }}', '{{ proyecto.curso.codigo }}')">✏️</button>
+                                <button class="btn btn-sm btn-delete" onclick="eliminarAsignacion({{ proyecto.id }}, 'proyecto')">🗑️</button>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">No hay proyectos asignados.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Modal Crear/Editar -->
+<div id="modalFormulario" class="modal">
+    <div class="modal-content">
+        <h4 id="modalTitulo">Nueva Asignación</h4>
+        <form id="formAsignacion">
+            <input type="hidden" id="asignacionId">
+            <input type="text" id="titulo" placeholder="Título o Nombre" required>
+            <textarea id="descripcion" placeholder="Descripción" required></textarea>
+            <input type="date" id="fecha_entrega" required>
+            <select id="curso" required>
+                {% for curso in cursos %}
+                <option value="{{ curso.codigo }}">{{ curso.nombre }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Entrega -->
+<div id="modalEntrega" class="modal">
+    <div class="modal-content">
+        <h4>Agregar Entrega</h4>
+        <form id="formEntrega">
+            <input type="hidden" id="entregaId">
+            <input type="text" id="enlaceEntrega" placeholder="Enlace (Drive, GitHub...)" required>
+            <textarea id="observacionesEntrega" placeholder="Observaciones (opcional)"></textarea>
+            <button type="submit" class="btn">Guardar Entrega</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+<script>
+    const modal = document.getElementById("modalFormulario");
+    const modalEntrega = document.getElementById("modalEntrega");
+    const form = document.getElementById("formAsignacion");
+    const formEntrega = document.getElementById("formEntrega");
+
+    let tipoGlobal = null;
+    let editando = false;
+
+    function abrirModal(tipo, id = null, titulo = "", descripcion = "", fecha = "", curso = "") {
+        tipoGlobal = tipo;
+        editando = !!id;
+
+        document.getElementById("modalTitulo").textContent = (editando ? "Editar " : "Nueva ") + (tipo === "tarea" ? "Tarea" : "Proyecto");
+        document.getElementById("asignacionId").value = id || "";
+        document.getElementById("titulo").value = titulo;
+        document.getElementById("descripcion").value = descripcion;
+        document.getElementById("fecha_entrega").value = fecha;
+        document.getElementById("curso").value = curso;
+        modal.style.display = "flex";
+    }
+
+    function abrirModalEntrega(id, tipo) {
+        tipoGlobal = tipo;
+        document.getElementById("entregaId").value = id;
+        document.getElementById("enlaceEntrega").value = "";
+        document.getElementById("observacionesEntrega").value = "";
+        modalEntrega.style.display = "flex";
+    }
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const data = {
+            id: document.getElementById("asignacionId").value,
+            tipo: tipoGlobal,
+            titulo: document.getElementById("titulo").value,
+            descripcion: document.getElementById("descripcion").value,
+            fecha_entrega: document.getElementById("fecha_entrega").value,
+            curso: document.getElementById("curso").value,
+            editando: editando
+        };
+
+        fetch("{% url 'guardar_asignacion' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(r => r.json())
+        .then(result => {
+            alert(result.success ? "Guardado correctamente." : "Error: " + result.message);
+            if (result.success) window.location.reload();
+        });
+    });
+
+    formEntrega.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const data = {
+            id: document.getElementById("entregaId").value,
+            tipo: tipoGlobal,
+            enlace: document.getElementById("enlaceEntrega").value,
+            observaciones: document.getElementById("observacionesEntrega").value
+        };
+
+        fetch("{% url 'guardar_entrega' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(r => r.json())
+        .then(result => {
+            alert(result.success ? "Entrega guardada correctamente." : "Error: " + result.message);
+            if (result.success) window.location.reload();
+        });
+    });
+
+    function eliminarAsignacion(id, tipo) {
+        if (confirm("¿Estás seguro de eliminar esta " + tipo + "?")) {
+            fetch("/eliminar-asignacion/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify({ id: id, tipo: tipo })
+            })
+            .then(r => r.json())
+            .then(result => {
+                alert(result.success ? "Eliminado correctamente." : "Error: " + result.message);
+                if (result.success) window.location.reload();
+            });
+        }
+    }
+
+    window.onclick = function(event) {
+        if (event.target === modal) modal.style.display = "none";
+        if (event.target === modalEntrega) modalEntrega.style.display = "none";
+    };
+</script>
+
+

@@ -25,9 +25,6 @@ SECRET_KEY = 'django-insecure-j8-(!gm+m!v(c2vxgmc(n!!srs+!6kavcodwmaw^g$1#p73tfp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -132,4 +129,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #VARIABLES DE REDIRECCION DE LOGIN Y LOGOUT
 LOGIN_REDIRECT_URL = 'registro' #URL DE REDIRECCION AL INICIO
 LOGOUT_REDIRECT_URL = 'inicio' #URL DE REDIRECCION AL REGISTRO
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 

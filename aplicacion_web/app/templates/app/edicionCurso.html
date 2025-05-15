@@ -1,14 +1,14 @@
-{% extends "./conexion.html" %}
-
+{% extends "app/conexion.html" %}
+{% load static %}
 {% block title %} Gestión de Cursos {% endblock %}
-{% block body %}
+{% block content %}
 <link rel="stylesheet" href="{% static 'app/css/edicionCurso.css' %}">
 <div class="row">
-  <div class="col-md-4 offset-md-4">
-      <h2>Edición de Curso</h2>
+  <div class="col-md-12">
+      <h2>EDICIÓN DE CURSO</h2>
       <div class="card" id="card">
           <div class="card-body">
-              <form action="/editarCurso/" method="POST">{% csrf_token %}
+              <form action="/cambiarCurso/" method="POST">{% csrf_token %}
                   <div class="form-group">
                       <input type="text" id="txtCodigo" name="txtCodigo" value="{{curso.codigo}}" class="form-control" placeholder="Código"
                           minlength="6" maxlength="6" readonly required>
@@ -23,12 +23,13 @@
                   </div>
                   <br><br>
                   <div class="form-group">
-                      <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                      <button type="submit" class="btn btn-success btn-block text-white" id= boton >GUARDAR</button>
                   </div>
               </form>
           </div>
       </div>
   </div>
 </div>
+
 
 {% endblock %}

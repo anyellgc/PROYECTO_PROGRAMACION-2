@@ -2,16 +2,28 @@ from django.contrib.auth.models import Group
 from django.dispatch import receiver
 from django.db.models.signals import post_save  
 
-from .models import Perfil
+from .models import Perfil, Estudiante
+
+from django.contrib.auth.models import Group
+from django.dispatch import receiver
+from django.db.models.signals import post_save  
+from .models import Perfil, Estudiante
 
 @receiver(post_save, sender=Perfil)
-def add_user_to_students_group(sender, instance, created, **kwargs):
+def crear_modelo_por_grupo(sender, instance, created, **kwargs):
     if created:
+        user = instance.user
         try:
-           students = Group.objects.get(name='estudiante')
+            estudiante_group = Group.objects.get(name='estudiante')
         except Group.DoesNotExist:
-            students = Group.objects.create(name='estudiante')
-            students = Group.objects.create(name='docentes')
-            students = Group.objects.create(name='administrativo')
-        instance.user.groups.add(students)
-        instance.user.save()
+            estudiante_group = Group.objects.create(name='estudiante')
+            Group.objects.create(name='docentes')
+            Group.objects.create(name='administrativo')
+        
+        user.groups.add(estudiante_group)
+        user.save()
+
+        # Crear modelo Estudiante si el usuario está en el grupo 'estudiante'
+        if user.groups.filter(name='estudiante').exists():
+            Estudiante.objects.create(user=user)
+        

@@ -1,42 +1,152 @@
 {% extends "app/conexion.html" %}
-
-{% block content %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href={% static 'app/css/login.css' %} rel="stylesheet">
-
 {% load crispy_forms_tags %}
 
-<h2>REGISTRO DE USUARIO</h2>
+{% block content %}
+<style>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-<br>
+.card {
+  background-color:rgb(169, 211, 181);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 30rem;
+  transition: transform 0.3s ease-in-out;
+  border: none;
+}
 
-<form action="" method="post">
-    {% csrf_token %}
+.card:hover {
+  transform: translateY(-5px);
+}
 
-    <div class="card mx-auto" style="width: 40rem;">
-  <div class="card-body">
-    <h5 class="card-title">Complete todos los campos</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Diligenciar cada uno de los campos:</h6>
-    {{ form | crispy }}
+.card-body {
+  padding: 2.5rem;
+}
 
-    <p class="card-text">Recuerde antes de registrarse rectificar que todos los campos esten llenos.</p>
-    <a href={% url 'registro' %} class="card-link">INICIO</a>
-    <a href={% url 'login' %} class="card-link">INICIAR SESION</a>
-    <button class="btn btn-sm btn-primary fload-end" type="submit">REGISTRARSE</button>
+.card-title {
+  color:rgb(17, 26, 18);
+  font-family: 'Georgia', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.card-subtitle {
+  color: #4dd0e1;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+form {
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  color: #006064;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.form-control {
+  border: 2px solid #80deea;
+  border-radius: 6px;
+  padding: 0.75rem;
+  transition: border-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: #00acc1;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+  outline: none;
+}
+
+.text-muted {
+  color: #424242 !important;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #00acc1;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background-color: #00869e;
+  transform: translateY(-2px);
+}
+
+.btn-primary:focus {
+  background-color: #00869e;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
+  outline: none;
+}
+
+.btn-link {
+  color: #00acc1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.btn-link:hover {
+  color: #00869e;
+  text-decoration: underline;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+</style>
+
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 0vh;">
+  <div class="card shadow-lg p-6" style="width: 50rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">REGISTRO DE USUARIO</h5>
+      <p class="card-subtitle mb-2 text-muted text-center">Complete todos los campos</p>
+
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <p class="text-muted mt-3">Recuerde antes de registrarse rectificar que todos los campos estén llenos.</p>
+        <div class="d-flex justify-content-between">
+          <a href="{% url 'registro' %}" class="btn btn-link">INICIO</a>
+          <a href="{% url 'login' %}" class="btn btn-link">INICIAR SESIÓN</a>
+          <button type="submit" class="btn btn-primary">REGISTRARSE</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-
-</form>
-
-
-
-
-
-{% endblock  %}
+{% endblock %}

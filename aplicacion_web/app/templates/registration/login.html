@@ -1,42 +1,139 @@
 {% extends "app/conexion.html" %}
-
-{% block content %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href={% static 'app/css/login.css' %} rel="stylesheet">
 {% load crispy_forms_tags %}
+{% block content %}
 
-<h4>LOGIN</h4>
+<style>
+    .card {
+    background-color:rgb(29, 210, 141); 
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(136, 23, 23, 0.1);
+    width: 30rem;
+    margin: 30px auto;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out; 
+  }
 
-<br>
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-title {
+    color:rgb(35, 40, 36);
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 650;
+    font-size: 1.4rem; 
+    text-transform: uppercase;
+  }
+
+  .card-subtitle {
+    color:rgb(19, 189, 73); 
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  label {
+    color:rgb(25, 36, 32);
+    font-weight: 500;
+
+    
+  }
+
+  .form-control {
+    border: 1px solidrgb(61, 41, 97); 
+    border-radius: 6px;
+    padding: 10px;
+    transition: border-color 0.3s ease; 
+    
+  }
+
+  .form-control:focus {
+    border-color:rgb(49, 190, 24); 
+    box-shadow: 0 0 0 2px rgba(156, 39, 176, 0.2); 
+    outline: none; 
+  }
+
+  .text-danger {
+    color: #e91e63;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+
+  .card-text {
+    color:rgb(19, 19, 19);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .card-link {
+    color:rgb(13, 1, 15);
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .card-link:hover {
+    color:rgb(6, 6, 6); 
+    text-transform: uppercase;
+  }
+
+  .btn-primary {
+    background-color:rgb(17, 188, 54);
+    border: none;
+    border-radius: 6px;
+    font family: 'Georgia', sans-serif;
+    padding: 10px 20px;
+    font-weight: 500;
+    color: black;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color:rgb(16, 16, 17); 
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:focus {
+    box-shadow: 0 0 0 3px rgba(12, 85, 39, 0.3); 
+    outline: none;
+  }
+
+  .fload-end {
+    margin-left: auto; 
+  }
+</style>
 
 <form action="" method="post">
-    {% csrf_token %}
-
-    <div class="card mx-auto" style="width: 40rem;">
-  <div class="card-body">
-    <h5 class="card-title">INGRESE SUS CREDENCIALES</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Registre los campos requeridos:   </h6>
-    
-    {{ form | crispy }}
-
-    <p class="card-text">Por favor diligenciar el campo contraseña con 10 caracteres.</p>
-    <a href={% url 'registro' %} class="card-link">INICIO</a>
-    <a href={% url 'registrer' %} class="card-link">REGISTRARSE</a>
-    <button class="btn btn-sm btn-primary fload-end" type="submit">INICIAR SESION</button>
+  {% csrf_token %}
+  <div class="card mx-auto">
+    <div class="card-body">
+      <h5 class="card-title">INGRESE SUS CREDENCIALES</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">
+        Registre los campos requeridos:
+      </h6>
+      {{ form | crispy }}
+      <p class="card-text">
+        Por favor, diligencie el campo contraseña con 10 caracteres.
+      </p>
+      <div class="d-flex justify-content-between align-items-center">
+        <a href={% url 'registro' %} class="card-link">INICIO</a>
+        <a href={% url 'registrer' %} class="card-link">REGISTRARSE</a>
+        <button class="btn btn-sm btn-primary fload-end" type="submit">
+          INICIAR SESION
+        </button>
+      </div>
+    </div>
   </div>
-</div>
-
 </form>
-
-
-
-
-
-{% endblock  %}
+{% endblock %}
